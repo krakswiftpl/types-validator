@@ -1,0 +1,61 @@
+<?php
+
+declare(strict_types=1);
+
+namespace VirComTest\TypesValidator;
+
+use ArrayIterator;
+use PHPUnit\Framework\TestCase;
+use stdClass;
+use VirCom\TypesValidator\Exception\InvalidArgumentTypeException;
+use VirCom\TypesValidator\NullValidator;
+
+class NullValidatorTest extends TestCase
+{
+    private NullValidator $validator;
+
+    protected function setUp(): void
+    {
+        $this->validator = new NullValidator();
+    }
+
+    public function testThatValidatorNotThrowsInvalidArgumentTypeExceptionWhenArgumentIsNull(): void
+    {
+        $this->assertNull(
+            $this->validator->validate(null)
+        );
+    }
+
+    public function invalidArgumentsDataProvider(): array
+    {
+        return [
+            [true],
+            [false],
+            [[]],
+            [[new NullValidator(), 'validate']],
+            ['substr'],
+            [PHP_FLOAT_MIN],
+            [0.0],
+            [PHP_FLOAT_MAX],
+            [PHP_INT_MIN],
+            [0],
+            [PHP_INT_MAX],
+            [new ArrayIterator()],
+            [new stdClass()],
+            [fopen('php://temp', 'r')],
+            [''],
+            ['test string'],
+        ];
+    }
+
+    /**
+     * @dataProvider invalidArgumentsDataProvider
+     */
+    public function testThatValidatorThrowsInvalidArgumentTypeExceptionWhenArgumentIsNotANull(
+        $argument
+    ): void {
+        $this->expectException(InvalidArgumentTypeException::class);
+
+        $this->validator->validate($argument);
+    }
+}
