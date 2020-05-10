@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace VirComTest\TypesValidator;
 
 use ArrayIterator;
-use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 use VirCom\TypesValidator\ClassValidator;
@@ -18,9 +17,7 @@ class ClassValidatorTest extends TestCase
     protected function setUp(): void
     {
         $this->validator = new ClassValidator(
-            ClassValidator::class,
-            TestCase::class,
-            Test::class,
+            ClassValidator::class
         );
     }
 
@@ -51,7 +48,7 @@ class ClassValidatorTest extends TestCase
             [true],
             [false],
             [[]],
-            [[new ClassValidator(), 'validate']],
+            [[new ClassValidator(''), 'validate']],
             ['substr'],
             [PHP_FLOAT_MIN],
             [0.0],

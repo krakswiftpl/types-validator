@@ -31,68 +31,9 @@ Composer installs autoloader at `./vendor/autoloader.php`. If you use vircom/htt
 require_once 'vendor/autoload.php';
 ```
 
-# Usage:
+# Documentation:
 
-## Available validators
-### Simple type validators
-* `VirCom\TypesValidator\ArrayValidator` - checks is argument is an array type
-* `VirCom\TypesValidator\BooleanValidator` - checks is argument is a boolean type
-* `VirCom\TypesValidator\CallableValidator` - checks is argument is a callable type
-* `VirCom\TypesValidator\FloatValidator` - checks is argument is a float type
-* `VirCom\TypesValidator\IntegerValidator` - checks is argument is an integer type
-* `VirCom\TypesValidator\IterableValidator` - checks is argument is an iterable type
-* `VirCom\TypesValidator\MixedValidator` - nothing to checks :)
-* `VirCom\TypesValidator\NullValidator` - checks is argument is a null type
-* `VirCom\TypesValidator\NumberValidator` - checks is argument is an integer or a float type
-* `VirCom\TypesValidator\ObjectValidator` - checks is argument is an object type
-* `VirCom\TypesValidator\ResourceValidator` - checks is argument is a resource type
-* `VirCom\TypesValidator\StringValidator` - checks is argument is a string type
-
-**Example:**
-```php
-use VirCom\TypesValidator\IntegerValidator;
-use VirCom\TypesValidator\Exception\InvalidArgumentTypeException;
-
-$valueToCheck = ...;
-
-$validator = new IntegerValidator();
-try {
-    $validator->validate($valueToCheck);
-} catch (InvalidArgumentTypeException $exception)
-    // ...
-}
-```
-
-### Class type validator
-Checks is argument is:
-* instance of class
-* instance of class that extends subclass
-* instance of class that implements interface
-
-**Example:**
-```php
-use VirCom\TypesValidator\ClassValidator;
-use VirCom\TypesValidator\Exception\InvalidArgumentTypeException;
-
-interface I {}
-interface II extends I {}
-class A implements II {}
-class B extends A {}
-class C {}
-
-$valueToCheck = new B();
-$validator = new ClassValidator(
-    I::class,
-    C::class
-);
-
-try {
-    $validator->validate($valueToCheck);
-} catch (InvalidArgumentTypeException $exception)
-    // ...
-}
-
-```
+Documentation is available in [GitBook](https://vircom.gitbook.io/vircom-types-validator)
 
 # About
 

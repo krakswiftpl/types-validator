@@ -9,9 +9,11 @@ use VirCom\TypesValidator\Exception\InvalidArgumentTypeException;
 class ClassValidator extends AbstractValidator
 {
     public function __construct(
-        string ...$allowedArgumentTypes
+        string $allowedArgumentType
     ) {
-        parent::__construct($allowedArgumentTypes);
+        parent::__construct([
+            $allowedArgumentType,
+        ]);
     }
 
     /**
