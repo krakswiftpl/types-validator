@@ -2,6 +2,10 @@
 =========
 # All notable changes to this project will be documented in this file.
 
+## 2.0.1 - 2020-06-20
+### Updated
+* Broken documentation link in Readme file
+
 ## 2.0.0 - 2020-05-10
 ### Added
 * Scalar types validator

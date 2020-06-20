@@ -33,7 +33,7 @@ require_once 'vendor/autoload.php';
 
 # Documentation:
 
-Documentation is available in [GitBook](https://vircom.gitbook.io/vircom-types-validator)
+Documentation is available in [GitBook](https://vircom.gitbook.io/vircom-types-validator/v/2.0.1)
 
 # About
 
